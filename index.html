@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Панель поваров</title>
+  <style>
+    :root {
+      --bg: #0f0b12;
+      --card: #1a1620;
+      --accent1: #ffb6d5;
+      --accent2: #c6a4ff;
+      --muted: #bdb3c8;
+    }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: linear-gradient(135deg, var(--bg), #0b0810);
+      color: #fff;
+      min-height: 100vh;
+    }
+    header {
+      padding: 18px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    h1 { margin: 0; color: var(--accent1); font-size: 20px; }
+    .tabs { display: flex; gap: 8px; margin: 16px; }
+    .tab {
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: var(--card);
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .tab.active {
+      background: linear-gradient(90deg,var(--accent1),var(--accent2));
+      color: #000;
+      font-weight: 600;
+    }
+    main { padding: 0 20px 40px; max-width: 900px; margin: auto; }
+    .panel {
+      background: var(--card);
+      padding: 16px;
+      border-radius: 14px;
+      margin-top: 20px;
+    }
+    .item {
+      background: rgba(255,255,255,0.04);
+      padding: 12px;
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+    .item-title { font-weight: 600; color: var(--accent1); }
+    .muted { font-size: 13px; color: var(--muted); }
+    input, textarea, select, button {
+      width: 100%; padding: 10px; margin-top: 8px;
+      border-radius: 8px; border: none;
+      background: rgba(255,255,255,0.08); color: #fff;
+    }
+    button {
+      background: linear-gradient(90deg,var(--accent1),var(--accent2));
+      color: #000; font-weight: 600; cursor: pointer;
+    }
+  </style>
+</head
