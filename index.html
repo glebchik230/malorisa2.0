@@ -8,9 +8,11 @@
 </head>
 <body>
   <header class="topbar">
-    <button class="top-btn left" onclick="showAbout()">О нас</button>
     <h1 class="title">МалоРиса</h1>
-    <button class="top-btn right" onclick="showTest()">Тестирование</button>
+    <div class="top-actions">
+      <button class="mini-btn" onclick="showAbout()">О нас</button>
+      <button class="mini-btn" onclick="showTest()">Тестирование</button>
+    </div>
   </header>
 
   <main class="home">
@@ -18,7 +20,6 @@
     <button class="big-btn" onclick="showOperators()">📞 Операторы</button>
   </main>
 
-  <!-- Здесь будут подгружаться экраны -->
   <div id="screen"></div>
 
   <script>
