@@ -3,31 +3,67 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Панель поваров</title>
+  <title>МалоРиса</title>
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <header>
-    <h1>Панель поваров</h1>
+  <header class="topbar">
+    <button class="top-btn left" onclick="showAbout()">О нас</button>
+    <h1 class="title">МалоРиса</h1>
+    <button class="top-btn right" onclick="showTest()">Тестирование</button>
   </header>
 
-  <div class="tabs">
-    <div class="tab active" data-cat="cold">Холодный цех</div>
-    <div class="tab" data-cat="hot">Горячий цех</div>
-    <div class="tab" data-cat="call">Операторы</div>
-  </div>
+  <main class="home">
+    <button class="big-btn" onclick="showChefs()">👨‍🍳 Повара</button>
+    <button class="big-btn" onclick="showOperators()">📞 Операторы</button>
+  </main>
 
-  <main>
-    <div id="list" class="panel"></div>
+  <!-- Здесь будут подгружаться экраны -->
+  <div id="screen"></div>
 
-    <div class="panel">
-      <h3>Добавить гайд</h3>
-      <form id="form">
-        <input id="title" placeholder="Заголовок" required />
-        <textarea id="content" rows="4" placeholder="Текст" required></textarea>
-        <select id="category">
-          <option value="cold">Холодный цех</option>
-          <option value="hot">Горячий цех</option>
-          <option value="call">Операторы</option>
-        </select>
-        <input id
+  <script>
+    function showAbout(){
+      document.getElementById("screen").innerHTML = `
+        <div class="panel">
+          <h2>О нас</h2>
+          <p>Заведение <b>МалоРиса</b> — современный общепит с заботой о качестве и команде.</p>
+          <button onclick="goHome()">Назад</button>
+        </div>`;
+    }
+
+    function showTest(){
+      document.getElementById("screen").innerHTML = `
+        <div class="panel">
+          <h2>Тестирование</h2>
+          <p>Здесь можно будет пройти внутренние тесты для сотрудников.</p>
+          <button onclick="goHome()">Назад</button>
+        </div>`;
+    }
+
+    function showChefs(){
+      document.getElementById("screen").innerHTML = `
+        <div class="panel">
+          <h2>Повара</h2>
+          <button onclick="alert('Холодный цех')">🥗 Холодный цех</button>
+          <button onclick="alert('Горячий цех')">🍲 Горячий цех</button>
+          <button onclick="goHome()">Назад</button>
+        </div>`;
+    }
+
+    function showOperators(){
+      document.getElementById("screen").innerHTML = `
+        <div class="panel">
+          <h2>Операторы</h2>
+          <p>Здесь будут гайды и новости для операторов колл-центра.</p>
+          <button onclick="goHome()">Назад</button>
+        </div>`;
+    }
+
+    function goHome(){
+      document.getElementById("screen").innerHTML = "";
+    }
+
+    if(window.Telegram && Telegram.WebApp){ Telegram.WebApp.ready(); }
+  </script>
+</body>
+</html>
