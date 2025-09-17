@@ -31,12 +31,24 @@ body {
   color: var(--accent1);
 }
 
-.top-btn {
-  background: transparent;
+.top-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.mini-btn {
+  padding: 6px 10px;
+  font-size: 13px;
   border: none;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.08);
   color: var(--accent2);
-  font-size: 15px;
   cursor: pointer;
+  transition: 0.2s;
+}
+
+.mini-btn:hover {
+  background: rgba(255,255,255,0.2);
 }
 
 .home {
