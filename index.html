@@ -6,81 +6,144 @@
   <title>МалоРиса</title>
   <link rel="stylesheet" href="style.css"/>
   <style>
+    /* Общие */
+    :root{
+      --bg:#0f0f10;
+      --panel:#141416;
+      --muted:#bcbcbc;
+      --gold:#f5c542;
+      --accent:#d4af37;
+    }
     body {
-      background: #111;
+      margin:0;
+      background: var(--bg);
       color: #eee;
-      font-family: Arial, sans-serif;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
     .topbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px;
-      background: #222;
-      color: #f5c542;
+      padding: 12px 14px;
+      background: linear-gradient(180deg,#131314,#0f0f10);
+      color: var(--gold);
+      border-bottom: 1px solid rgba(255,255,255,0.03);
     }
-    .title { margin: 0; font-size: 1.2rem; }
+    .title { margin: 0; font-size: 1.1rem; letter-spacing: .6px; }
+    .top-actions { display:flex; gap:8px; align-items:center; }
     .mini-btn {
-      background: #333;
-      color: #f5c542;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 6px;
-      margin-left: 5px;
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid rgba(245,197,66,0.12);
+      padding: 7px 10px;
+      border-radius: 8px;
       cursor: pointer;
+      font-weight:600;
     }
     .big-btn {
       display: block;
-      width: 80%;
-      margin: 10px auto;
-      padding: 15px;
-      font-size: 1.2rem;
-      background: #222;
-      color: #f5c542;
-      border: 1px solid #f5c542;
-      border-radius: 10px;
+      width: 86%;
+      margin: 14px auto;
+      padding: 14px;
+      font-size: 1.05rem;
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid rgba(245,197,66,0.14);
+      border-radius: 12px;
       cursor: pointer;
+      text-align:center;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.6);
     }
+    .home { padding: 8px 0 40px; }
+
+    /* Панели */
     .panel {
-      padding: 15px;
-      margin: 15px;
-      background: #1b1b1b;
-      border-radius: 10px;
-      border: 1px solid #333;
+      padding: 16px;
+      margin: 14px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.03);
       color: #eee;
     }
+
+    /* Карьерные ступени */
+    .career {
+      padding: 6px 12px;
+      text-align: left;
+    }
+    .section-title {
+      color: var(--gold);
+      font-weight:700;
+      margin:6px 0 12px 0;
+      font-size:1.05rem;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
     .career-step {
-      margin: 15px 0;
-      padding: 15px;
+      padding: 12px;
       border-radius: 12px;
-      background: linear-gradient(135deg, #1c1c1c, #2a2a2a);
-      border-left: 5px solid #f5c542;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.6);
+      background: linear-gradient(180deg, #111, #181818);
+      border-left: 6px solid var(--gold);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
     }
+    .career-step.operator { border-left-color: #b87333; } /* медный акцент для операторов */
     .career-step h3 {
-      margin: 0 0 5px 0;
-      color: #f5c542;
-      font-size: 1.1rem;
+      margin:0 0 6px 0;
+      color: var(--gold);
+      font-size: 1rem;
+      letter-spacing: .3px;
     }
-    .career-step p {
-      margin: 0;
+    .career-step .meta {
+      color: var(--muted);
       font-size: 0.9rem;
-      color: #ccc;
+      margin-bottom:6px;
     }
+    .career-step p { margin:0; color:#d6d6d6; font-size:0.95rem; }
+
+    /* Бонусный блок */
     .bonus-panel {
       background: #000;
       color: #fff;
-      padding: 15px;
-      border-radius: 10px;
-      margin-top: 20px;
+      padding: 16px;
+      border-radius: 12px;
+      margin-top: 16px;
       text-align: center;
-      border: 1px solid #444;
+      border: 1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.7);
     }
-    .bonus-panel h3 {
-      color: #f5c542;
+    .bonus-panel h3 { color: var(--accent); margin:0 0 8px 0; font-size:1.05rem; }
+    .bonus-list { display:flex; flex-direction:column; gap:6px; margin-top:8px; color:#fff; }
+    .bonus-note { margin-top:10px; color:#e6e6e6; font-style:italic; }
+
+    /* Кнопки внутри панелей */
+    .panel button, .career .action-btn {
+      display:inline-block;
+      margin-top:12px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(90deg, var(--gold), #c89f2b);
+      color: #111;
+      font-weight:700;
+      cursor:pointer;
     }
-    .bonus-panel p {
-      margin: 5px 0;
+    .small-btn {
+      padding:8px 12px;
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid rgba(245,197,66,0.12);
+      border-radius: 8px;
+      cursor:pointer;
+    }
+
+    /* Адаптация */
+    @media (min-width:700px){
+      .steps { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
@@ -107,7 +170,7 @@
         <div class="panel">
           <h2>О нас</h2>
           <p>Заведение <b>МалоРиса</b> — современный общепит с заботой о качестве и команде.</p>
-          <button onclick="goHome()">Назад</button>
+          <button class="small-btn" onclick="goHome()">Назад</button>
         </div>`;
     }
 
@@ -116,7 +179,7 @@
         <div class="panel">
           <h2>Тестирование</h2>
           <p>Здесь можно будет пройти внутренние тесты для сотрудников.</p>
-          <button onclick="goHome()">Назад</button>
+          <button class="small-btn" onclick="goHome()">Назад</button>
         </div>`;
     }
 
@@ -124,9 +187,10 @@
       document.getElementById("screen").innerHTML = `
         <div class="panel">
           <h2>Повара</h2>
-          <button onclick="alert('Холодный цех')">🥗 Холодный цех</button>
-          <button onclick="alert('Горячий цех')">🍲 Горячий цех</button>
-          <button onclick="goHome()">Назад</button>
+          <p class="meta">Выберите цех для подробной информации и гайдов</p>
+          <button class="small-btn" onclick="alert('Холодный цех')">🥗 Холодный цех</button>
+          <button class="small-btn" onclick="alert('Горячий цех')">🍲 Горячий цех</button>
+          <button class="small-btn" onclick="goHome()" style="margin-left:8px;">Назад</button>
         </div>`;
     }
 
@@ -134,59 +198,109 @@
       document.getElementById("screen").innerHTML = `
         <div class="panel">
           <h2>Операторы</h2>
-          <p>Здесь будут гайды и новости для операторов колл-центра.</p>
-          <button onclick="goHome()">Назад</button>
+          <p class="meta">Гайды и новости для операторов колл-центра будут здесь</p>
+          <button class="small-btn" onclick="goHome()">Назад</button>
         </div>`;
     }
 
     function showCareer(){
       document.getElementById("screen").innerHTML = `
-        <div class="panel">
-          <h2>Карьерная лестница</h2>
+        <div class="panel career">
+          <h2 style="color:var(--gold);margin:0 0 10px 0;">Карьерная лестница</h2>
 
-          <div class="career-step">
-            <h3>Стажёр</h3>
-            <p>2 недели • Ставка: обучение</p>
-            <p>→ Авто-повышение до Заготовщика</p>
-          </div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <div style="flex:1;min-width:260px;">
+              <div class="section-title">🔪 Кухня</div>
+              <div class="steps">
+                <div class="career-step">
+                  <h3>Стажёр</h3>
+                  <div class="meta">Срок: 2 недели • Ставка: обучение</div>
+                  <p>Основы: санитары, простые заготовки, знакомство с ритмом кухни.</p>
+                  <p style="margin-top:6px;color:var(--muted)">→ Авто-повышение: Заготовщик после 2 недель</p>
+                </div>
 
-          <div class="career-step">
-            <h3>Заготовщик</h3>
-            <p>1 месяц • Ставка: 200 ₽/ч</p>
-            <p>→ Авто-повышение до Линейного повара</p>
-          </div>
+                <div class="career-step">
+                  <h3>Заготовщик</h3>
+                  <div class="meta">Срок: 1 месяц • Ставка: 200 ₽/ч</div>
+                  <p>Заготовки, нарезка, хранение, работа с полуфабрикатами.</p>
+                  <p style="margin-top:6px;color:var(--muted)">→ Авто-повышение: Линейный повар после 1 месяца</p>
+                </div>
 
-          <div class="career-step">
-            <h3>Линейный повар</h3>
-            <p>1 год • Ставка: 250 ₽/ч</p>
-            <p>→ Повышение по решению шефа</p>
-          </div>
+                <div class="career-step">
+                  <h3>Линейный повар</h3>
+                  <div class="meta">Срок: минимум 1 год • Ставка: 250 ₽/ч</div>
+                  <p>Работа на участке по ТТК, скорость и качество — ключевые показатели.</p>
+                  <p style="margin-top:6px;color:var(--muted)">→ Повышение до старшего по решению шефа</p>
+                </div>
 
-          <div class="career-step">
-            <h3>Шеф-повар</h3>
-            <p>3+ года • Ставка: 300 ₽/ч</p>
-            <p>→ Получает % от кухни</p>
-          </div>
+                <div class="career-step">
+                  <h3>Старший повар / Су-шеф участка</h3>
+                  <div class="meta">Срок: 1–2 года • Ставка: ~270–280 ₽/ч</div>
+                  <p>Контроль за участком, наставничество, обеспечение стандартов.</p>
+                </div>
 
-          <div class="career-step">
-            <h3>Бренд-шеф</h3>
-            <p>5+ лет • Ставка: 350 ₽/ч+</p>
-            <p>→ Доля/премии, участие в развитии сети</p>
+                <div class="career-step">
+                  <h3>Шеф-повар</h3>
+                  <div class="meta">Срок: 3+ года • Ставка: 300 ₽/ч + %</div>
+                  <p>Разработка меню, закупки, управление командой и качеством.</p>
+                </div>
+
+                <div class="career-step">
+                  <h3>Бренд-шеф</h3>
+                  <div class="meta">Срок: 5+ лет • Ставка: 350 ₽/ч+</div>
+                  <p>Развитие концепции сети, обучение шефов, участие в прибыли/опционах.</p>
+                </div>
+              </div>
+            </div>
+
+            <div style="flex:1;min-width:260px;">
+              <div class="section-title">🛎 Операторы / Зал</div>
+              <div class="steps">
+                <div class="career-step operator">
+                  <h3>Оператор (кассир / официант / бариста)</h3>
+                  <div class="meta">Срок: 1–6 мес. • Ставка: 200 ₽/ч</div>
+                  <p>Приём заказов, работа с гостями, кассовая дисциплина.</p>
+                </div>
+
+                <div class="career-step operator">
+                  <h3>Старший оператор</h3>
+                  <div class="meta">Срок: 6–12 мес. • Ставка: 220 ₽/ч</div>
+                  <p>Координация смены операторов, отчётность, помощь с конфликтами.</p>
+                </div>
+
+                <div class="career-step operator">
+                  <h3>Администратор зала</h3>
+                  <div class="meta">Срок: 1–2 года • Ставка: 250 ₽/ч</div>
+                  <p>Организация смен, связь с кухней, контроль сервиса и кассы.</p>
+                </div>
+
+                <div class="career-step operator">
+                  <h3>Старший администратор / Управляющий сменой</h3>
+                  <div class="meta">Срок: 2–3 года • Ставка: 270 ₽/ч + %</div>
+                  <p>Управление командой, отчётность по смене, KPI и оборот.</p>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="bonus-panel">
             <h3>🎁 Бонусы за выслугу</h3>
-            <p>6 мес. — премия 5 000 ₽</p>
-            <p>1 год — премия 10 000 ₽</p>
-            <p>2 года — доп. отпуск</p>
-            <p>3 года — +2 000 ₽/мес</p>
-            <p>5 лет — премия 30 000 ₽ или доля</p>
-            <br/>
-            <p><i>Ставки и бонусы будут меняться со временем.</i></p>
-            <p><b>Наши сотрудники стоят у истоков чего-то великого.</b></p>
+            <div class="bonus-list">
+              <div>6 мес. — премия 5 000 ₽</div>
+              <div>1 год — премия 10 000 ₽</div>
+              <div>2 года — дополнительный оплачиваемый отпуск</div>
+              <div>3 года — постоянная надбавка +2 000 ₽/мес</div>
+              <div>5 лет — премия 30 000 ₽ или предложенная доля/опцион</div>
+            </div>
+            <div class="bonus-note">
+              ⚡ Ставки и бонусы будут меняться со временем. <br/>
+              <b>Наши сотрудники стоят у истоков чего-то великого вместе с МалоРиса.</b>
+            </div>
           </div>
 
-          <button onclick="goHome()">Назад</button>
+          <div style="margin-top:12px;text-align:center;">
+            <button class="action-btn" onclick="goHome()">Закрыть</button>
+          </div>
         </div>`;
     }
 
@@ -194,9 +308,11 @@
       document.getElementById("screen").innerHTML = "";
     }
 
+    /* Telegram WebApp ready */
     if(window.Telegram && Telegram.WebApp){ Telegram.WebApp.ready(); }
   </script>
 </body>
 </html>
+
 
 
