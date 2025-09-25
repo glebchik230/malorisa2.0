@@ -6,52 +6,81 @@
   <title>МалоРиса</title>
   <link rel="stylesheet" href="style.css"/>
   <style>
-    /* Стили для презентации */
-    .career {
+    body {
+      background: #111;
+      color: #eee;
+      font-family: Arial, sans-serif;
+    }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      background: #222;
+      color: #f5c542;
+    }
+    .title { margin: 0; font-size: 1.2rem; }
+    .mini-btn {
+      background: #333;
+      color: #f5c542;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      margin-left: 5px;
+      cursor: pointer;
+    }
+    .big-btn {
+      display: block;
+      width: 80%;
+      margin: 10px auto;
       padding: 15px;
-      text-align: center;
+      font-size: 1.2rem;
+      background: #222;
+      color: #f5c542;
+      border: 1px solid #f5c542;
+      border-radius: 10px;
+      cursor: pointer;
     }
-    .career h2 {
-      margin-bottom: 10px;
-      color: #d63384;
+    .panel {
+      padding: 15px;
+      margin: 15px;
+      background: #1b1b1b;
+      border-radius: 10px;
+      border: 1px solid #333;
+      color: #eee;
     }
-    .career-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 20px;
-      font-size: 14px;
-    }
-    .career-table th, .career-table td {
-      border: 1px solid #f3b6d0;
-      padding: 8px;
-    }
-    .career-table th {
-      background: #ffe6f0;
-    }
-    .career-bonus {
-      background: #000;      /* Черный фон */
-      color: #fff;           /* Белый текст */
+    .career-step {
+      margin: 15px 0;
       padding: 15px;
       border-radius: 12px;
+      background: linear-gradient(135deg, #1c1c1c, #2a2a2a);
+      border-left: 5px solid #f5c542;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.6);
+    }
+    .career-step h3 {
+      margin: 0 0 5px 0;
+      color: #f5c542;
+      font-size: 1.1rem;
+    }
+    .career-step p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+    .bonus-panel {
+      background: #000;
+      color: #fff;
+      padding: 15px;
+      border-radius: 10px;
       margin-top: 20px;
-      text-align: left;
+      text-align: center;
+      border: 1px solid #444;
     }
-    .career-bonus h3 {
-      color: #fff;
-      margin-bottom: 10px;
+    .bonus-panel h3 {
+      color: #f5c542;
     }
-    .career-bonus p {
-      margin: 6px 0;
-    }
-    button {
-      margin-top: 10px;
-      padding: 8px 14px;
-      border: none;
-      border-radius: 8px;
-      background: #f3b6d0;
-      color: #fff;
-      font-weight: bold;
-      cursor: pointer;
+    .bonus-panel p {
+      margin: 5px 0;
     }
   </style>
 </head>
@@ -91,46 +120,6 @@
         </div>`;
     }
 
-    function showCareer(){
-      document.getElementById("screen").innerHTML = `
-        <div class="panel career">
-          <h2>Карьерная лестница</h2>
-          <h3>🔪 Кухня</h3>
-          <table class="career-table">
-            <tr><th>Должность</th><th>Срок</th><th>Ставка</th><th>Повышение</th></tr>
-            <tr><td>Стажёр</td><td>2 недели</td><td>0–200 ₽/ч</td><td>Авто → Заготовщик</td></tr>
-            <tr><td>Заготовщик</td><td>1 месяц</td><td>200 ₽/ч</td><td>Авто → Линейный</td></tr>
-            <tr><td>Линейный повар</td><td>1 год</td><td>250 ₽/ч</td><td>По решению шефа</td></tr>
-            <tr><td>Старший повар</td><td>1–2 года</td><td>270 ₽/ч</td><td>После года работы</td></tr>
-            <tr><td>Су-шеф</td><td>2–3 года</td><td>280 ₽/ч</td><td>Назначение</td></tr>
-            <tr><td>Шеф-повар</td><td>3–5 лет</td><td>300 ₽/ч</td><td>% от кухни</td></tr>
-            <tr><td>Бренд-шеф</td><td>5+ лет</td><td>350 ₽/ч+</td><td>Доля/премии</td></tr>
-          </table>
-
-          <h3>🛎 Операторы</h3>
-          <table class="career-table">
-            <tr><th>Должность</th><th>Срок</th><th>Ставка</th><th>Повышение</th></tr>
-            <tr><td>Оператор</td><td>1–6 мес.</td><td>200 ₽/ч</td><td>Старший оператор</td></tr>
-            <tr><td>Старший оператор</td><td>6–12 мес.</td><td>220 ₽/ч</td><td>Администратор</td></tr>
-            <tr><td>Администратор</td><td>1–2 года</td><td>250 ₽/ч</td><td>Старший админ</td></tr>
-            <tr><td>Старший админ</td><td>2–3 года</td><td>270 ₽/ч</td><td>% от оборота</td></tr>
-          </table>
-
-          <div class="career-bonus">
-            <h3>🎁 Бонусы за выслугу</h3>
-            <p>6 мес. — премия 5 000 ₽</p>
-            <p>1 год — премия 10 000 ₽</p>
-            <p>2 года — доп. отпуск</p>
-            <p>3 года — +2 000 ₽/мес</p>
-            <p>5 лет — премия 30 000 ₽ или доля</p>
-            <hr>
-            <p><i>⚡ Ставки и бонусы будут меняться со временем. Сегодня вы — у истоков чего-то великого вместе с <b>МалоРиса</b>.</i></p>
-          </div>
-
-          <button onclick="goHome()">Назад</button>
-        </div>`;
-    }
-
     function showChefs(){
       document.getElementById("screen").innerHTML = `
         <div class="panel">
@@ -150,6 +139,57 @@
         </div>`;
     }
 
+    function showCareer(){
+      document.getElementById("screen").innerHTML = `
+        <div class="panel">
+          <h2>Карьерная лестница</h2>
+
+          <div class="career-step">
+            <h3>Стажёр</h3>
+            <p>2 недели • Ставка: обучение</p>
+            <p>→ Авто-повышение до Заготовщика</p>
+          </div>
+
+          <div class="career-step">
+            <h3>Заготовщик</h3>
+            <p>1 месяц • Ставка: 200 ₽/ч</p>
+            <p>→ Авто-повышение до Линейного повара</p>
+          </div>
+
+          <div class="career-step">
+            <h3>Линейный повар</h3>
+            <p>1 год • Ставка: 250 ₽/ч</p>
+            <p>→ Повышение по решению шефа</p>
+          </div>
+
+          <div class="career-step">
+            <h3>Шеф-повар</h3>
+            <p>3+ года • Ставка: 300 ₽/ч</p>
+            <p>→ Получает % от кухни</p>
+          </div>
+
+          <div class="career-step">
+            <h3>Бренд-шеф</h3>
+            <p>5+ лет • Ставка: 350 ₽/ч+</p>
+            <p>→ Доля/премии, участие в развитии сети</p>
+          </div>
+
+          <div class="bonus-panel">
+            <h3>🎁 Бонусы за выслугу</h3>
+            <p>6 мес. — премия 5 000 ₽</p>
+            <p>1 год — премия 10 000 ₽</p>
+            <p>2 года — доп. отпуск</p>
+            <p>3 года — +2 000 ₽/мес</p>
+            <p>5 лет — премия 30 000 ₽ или доля</p>
+            <br/>
+            <p><i>Ставки и бонусы будут меняться со временем.</i></p>
+            <p><b>Наши сотрудники стоят у истоков чего-то великого.</b></p>
+          </div>
+
+          <button onclick="goHome()">Назад</button>
+        </div>`;
+    }
+
     function goHome(){
       document.getElementById("screen").innerHTML = "";
     }
@@ -158,4 +198,5 @@
   </script>
 </body>
 </html>
+
 
